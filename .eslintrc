@@ -1,0 +1,10 @@
+{
+  "parser": "babel-eslint",
+  "plugins": ["react", "react-native", "module-resolver"],
+  "extends": ["@react-native-community"],
+  "settings": {
+    "import/resolver": {
+      "babel-module": {}
+    }
+  }
+}
