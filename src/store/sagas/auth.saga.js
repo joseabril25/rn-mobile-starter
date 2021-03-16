@@ -10,6 +10,7 @@ import {
   resetGenericPassword,
 } from '../../utils/keychain';
 import { requestLogin } from '../../api/auth';
+import handleError from '../../utils/handleError';
 
 
 /**
@@ -57,7 +58,7 @@ import { requestLogin } from '../../api/auth';
       });
     }
   } catch (error) {
-    console.log("🚀 ~ file: auth.saga.js ~ line 75 ~ function*authLogin ~ error", error)
+    console.log("🚀 ~ file: auth.saga.js ~ line 78 ~ function*authLogin ~ handleError(error)", handleError(error));
     yield put({ type: authTypes.AUT_LOGIN_ERROR, payload: handleError(error) });
   } finally {
     yield put({ type: authTypes.AUT_LOGIN_LOADING, payload: false });
