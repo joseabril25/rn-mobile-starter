@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { authCheck } from '../store/actions/auth.actions';
 import AuthNavigator from './auth.navigator';
 
-import { authCheck } from '~/store/actions/auth.actions';
+import MenuNavigator from './menu.navigator';
 
 const AppRouter = ({
   isLoggedIn,
   checkUserToken,
 }) => {
+  console.log("🚀 ~ file: app.router.js ~ line 12 ~ isLoggedIn", isLoggedIn)
   useEffect(() => {
     checkUserToken();
   }, [checkUserToken]);
@@ -16,7 +18,7 @@ const AppRouter = ({
     return <AuthNavigator />;
   }
 
-  return <AuthNavigator />;
+  return <MenuNavigator />;
 };
 
 const mapStateToProps = ({ auth, app }) => ({

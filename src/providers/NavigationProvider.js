@@ -4,13 +4,6 @@ import { NavigationContainer } from '@react-navigation/native';
 
 
 const NavigationProvider = ({ children }) => {
-
-  // const routeNameRef = useRef();
-
-  // const onReady = () => {
-  //   routeNameRef.current = navigationRef.current.getCurrentRoute().name;
-  // };
-
   return (
     <>
       <NavigationContainer>

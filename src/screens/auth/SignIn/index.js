@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { authLogin } from '~/store/actions/auth.actions';
+import { authLogin } from '../../../store/actions/auth.actions';
 import regex from '../../../utils/regex';
 import styles from './styles';
 
@@ -35,7 +35,8 @@ const SignIn = ({ navigation, submitLogin, isLoading, loginError }) => {
   };
 
   const onLogin = (data) => {
-    // submitLogin(data);
+    console.log("🚀 ~ file: index.js ~ line 38 ~ onLogin ~ data", data)
+    submitLogin(data);
   };
 
   return (

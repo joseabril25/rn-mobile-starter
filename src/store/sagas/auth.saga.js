@@ -9,6 +9,7 @@ import {
   getGenericPassword,
   resetGenericPassword,
 } from '../../utils/keychain';
+import { requestLogin } from '../../api/auth';
 
 
 /**
@@ -16,9 +17,7 @@ import {
  * @param {Object} payload { email, password }
  */
  function* authLogin({ payload }) {
-  const { env } = yield select(({ app }) => ({
-    env: app.env,
-  }));
+  console.log("🚀 ~ file: auth.saga.js ~ line 19 ~ function*authLogin ~ payload", payload)
 
   const { email, password } = payload;
 
@@ -32,6 +31,7 @@ import {
     ]);
 
     const { data: response, status } = yield call(requestLogin, login);
+    console.log("🚀 ~ file: auth.saga.js ~ line 34 ~ function*authLogin ~ status", status)
     if (status < 400) {
       const { token, user } = response;
 
@@ -57,6 +57,7 @@ import {
       });
     }
   } catch (error) {
+    console.log("🚀 ~ file: auth.saga.js ~ line 75 ~ function*authLogin ~ error", error)
     yield put({ type: authTypes.AUT_LOGIN_ERROR, payload: handleError(error) });
   } finally {
     yield put({ type: authTypes.AUT_LOGIN_LOADING, payload: false });
@@ -104,9 +105,6 @@ import {
  * @type AUT_LOGOUT
  */
  function* authLogout() {
-  const { env } = yield select(({ app }) => ({
-    env: app.env,
-  }));
 
   try {
     // AUTH RESET
