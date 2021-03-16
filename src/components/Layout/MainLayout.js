@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { colors } from '~/themes';
-import { setIphoneSize } from '~/utils/isIphoneX';
+import { colors } from '../../themes';
+import { setIphoneSize } from '../../utils/isiPhoneX';
 
 const MainLayout = ({ children }) => (
   <SafeAreaView style={styles.view}>{children}</SafeAreaView>

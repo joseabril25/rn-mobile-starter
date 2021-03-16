@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
-import { colors } from '~/themes';
-import { setIphoneSize } from '~/utils/isIphoneX';
+import { colors } from '../../themes';
 
 const Layout = ({ children, hasHeader }) => (
   <SafeAreaView style={[styles.view, hasHeader && styles.hasHeader]}>
@@ -18,7 +17,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   hasHeader: {
-    marginTop: setIphoneSize(-27, -47),
+    marginTop: 27,
   },
 });
 
