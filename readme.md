@@ -1,4 +1,4 @@
-# RN Deal Tracker
+# React Native
 
 Setup and configurations and code structure to help you get started on the app.
 
