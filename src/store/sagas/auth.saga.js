@@ -46,6 +46,7 @@ import handleError from '../../utils/handleError';
       yield all([
         put({ type: authTypes.AUT_SET_USER, payload: user }),
         put({ type: authTypes.AUT_SET_APW, payload: token }),
+        put({ type: appTypes.APP_HANDLE_ANALYTICS }),
       ]);
       // yield put({ type: authTypes.AUT_SET_ROLES, payload: roles });
       // Sets to true if logged in is successful
