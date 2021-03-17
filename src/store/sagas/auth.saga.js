@@ -58,7 +58,7 @@ import handleError from '../../utils/handleError';
       });
     }
   } catch (error) {
-    console.log("🚀 ~ file: auth.saga.js ~ line 78 ~ function*authLogin ~ handleError(error)", handleError(error));
+    console.log("🚀 ~ file: auth.saga.js ~ line 78 ~ function*authLogin ~ handleError(error)",error);
     yield put({ type: authTypes.AUT_LOGIN_ERROR, payload: handleError(error) });
   } finally {
     yield put({ type: authTypes.AUT_LOGIN_LOADING, payload: false });
