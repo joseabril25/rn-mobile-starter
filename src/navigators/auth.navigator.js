@@ -5,6 +5,8 @@ import {
 
 import routes from './auth.routes';
 import SignIn from '../screens/auth/SignIn';
+import Register from '../screens/auth/Register';
+import { HeaderMenu } from '../components/Header';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +20,14 @@ const AuthNavigator = () => (
       component={SignIn}
       options={{
         headerShown: false,
+      }}
+    />
+    <Stack.Screen
+      name={routes.stack.Register}
+      component={Register}
+      options={{
+        title: 'Registration',
+        header: (props) => <HeaderMenu {...props} />,
       }}
     />
   </Stack.Navigator>

@@ -11,18 +11,29 @@ import { authLogin } from '../../../store/actions/auth.actions';
 import regex from '../../../utils/regex';
 import styles from './styles';
 
-import Input from '../../../components/Input';
-import Button, { TouchView } from '../../../components/Button';
+// Images
 
-import routes from '../../../navigators/auth.routes'
+// Components
+import Input, { Select } from '../../../components/Input';
+import Button from '../../../components/Button';
 
-const SignIn = ({ navigation, submitLogin, isLoading, loginError }) => {
+const selector = [{
+  label: 'Male', value: 'Male',
+  label: 'Female', value: 'Female',
+}]
+const Register = ({ navigation, submitLogin, isLoading, loginError }) => {
   const { handleSubmit, control, errors, trigger } = useForm({
     mode: 'onBlur',
     reValidateMode: 'onChange',
     defaultValues: {
       email: '',
       password: '',
+      firstName: '',
+      middleName: '',
+      lastName: '',
+      email: '',
+      bday: '',
+      gender: '',
     },
   });
 
@@ -49,9 +60,6 @@ const SignIn = ({ navigation, submitLogin, isLoading, loginError }) => {
 
           <View style={styles.flex}>
             <View style={styles.container}>
-              <Text style={styles.text}>
-                Login
-              </Text>
             </View>
 
           </View>
@@ -79,6 +87,26 @@ const SignIn = ({ navigation, submitLogin, isLoading, loginError }) => {
               }}
             />
 
+            <Select
+              navigation={navigation}
+              name="gender"
+              control={control}
+              label="Gender"
+              placeholder="Gender"
+              style={styles.input}
+              onBlur={() => trigger('gender')}
+              error={handleLoginError('gender', loginError, errors)}
+              type="email"
+              rules={{
+                required: 'This is required',
+                pattern: {
+                  value: regex.EMAIL,
+                  message: 'Input valid Gender',
+                },
+              }}
+              items={selector}
+            />
+
             <Input
               name="password"
               control={control}
@@ -94,14 +122,13 @@ const SignIn = ({ navigation, submitLogin, isLoading, loginError }) => {
             />
 
             <Button
-              title="Sign In"
+              title="Sign Up"
               disabled={Object.keys(errors).length !== 0}
               loading={isLoading}
               style={styles.button}
               onPress={handleSubmit(onLogin)}
             />
           </View>
-
         </ScrollView>
       </SafeAreaView>
     </>
@@ -117,6 +144,6 @@ const mapDispatchToProps = {
   submitLogin: authLogin,
 };
 
-SignIn.displayName = 'Screen_SignIn';
+Register.displayName = 'Screen_Register';
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

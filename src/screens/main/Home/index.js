@@ -4,28 +4,41 @@ import {
   Text,
   FlatList,
 } from 'react-native';
+import { connect } from 'react-redux';
 import Card from '../../../components/Card';
 import { MainLayout } from '../../../components/Layout';
 import styles from './styles'
 
-const data = [
-  { title: 'Total Users', data: 200 },
-  { title: 'Per Gender', data: 45 },
-  { title: 'Active', data: 145 },
-  { title: 'Inactive', data: 37 },
-  { title: 'Per Email', data: 140 },
-  { title: 'Per Mobile', data: 20 },
-  { title: 'Per Social Media', data: 40 },
-  { title: 'Registration Per Day', data: 23 },
-]
-const Home = () => {
+
+const Home = ({ analyticsData }) => {
+
+  const getTitle = (title) => {
+    switch(title) {
+      case 'totalUsers':
+        return 'Total Users';
+      case 'totalFemale':
+        return 'Female Users';
+      case 'totalMale':
+        return 'Male Users';
+      case 'activeUsers':
+        return 'Active Users';
+      case 'inactiveUsers':
+        return 'Inactive Users';
+      case 'emailUsers':
+        return 'Email Users';
+      case 'mobileUsers':
+        return 'Mobile Users';
+      default:
+        break;
+    }
+  }
 
   const _renderAnalytics = ({ item }) => (
     <Card style={{ marginBottom: 16 }}>
       <View style={styles.taskBody}>
         <View style={styles.taskBodyInfo}>
           <View>
-            <Text style={styles.taskBodyTitle}>{item.title}</Text>
+            <Text style={styles.taskBodyTitle}>{getTitle(item.title)}</Text>
           </View>
         </View>
         <View>
@@ -38,13 +51,13 @@ const Home = () => {
   return (
     <MainLayout>
       <FlatList 
-        data={data}
+        data={analyticsData}
         keyExtractor={(_, index) => index.toString()}
         renderItem={_renderAnalytics}
         ListHeaderComponent={
           <View>
             <View style={styles.heading}>
-              <Text style={styles.headingTitle}>Get the latest analytics data</Text>
+              <Text style={styles.headingTitle}>Latest Analytics Data</Text>
             </View>
           </View>
         }
@@ -54,4 +67,8 @@ const Home = () => {
   ) 
 }
 
-export default Home;
+const mapStateToProps = ({ app }) => ({
+  analyticsData: app.analyticsData
+});
+
+export default connect(mapStateToProps)(Home);

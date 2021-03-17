@@ -1,12 +1,17 @@
 import { appTypes } from '../types';
 const defaultState = {
-  // Used for reinstallation
-  session: false,
+  analyticsData: null,
+  session: false
 };
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case appTypes:
+    case appTypes.APP_SET_ANALYTICS:
+      return {
+        ...state,
+        analyticsData: action.payload,
+      };
+    case appTypes.APP_SET_SESSION:
       return {
         ...state,
         session: action.payload,

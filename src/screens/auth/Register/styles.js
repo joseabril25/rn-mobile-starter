@@ -4,11 +4,6 @@ import { colors, fonts } from '~/themes';
 const dimensions = Dimensions.get('screen');
 
 const styles = StyleSheet.create({
-  mainWrapper: {
-    marginHorizontal: 16,
-    marginTop: 74,
-    flex: 1,
-  },
   imageBackground: {
     position: 'relative',
     resizeMode: 'cover',

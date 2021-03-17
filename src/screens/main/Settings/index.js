@@ -7,6 +7,7 @@ import {
 import { connect } from 'react-redux';
 
 import Button from '../../../components/Button';
+import { MainLayout } from '../../../components/Layout';
 import { authLogout } from '../../../store/actions/auth.actions';
 
 import styles from './styles'
@@ -19,17 +20,15 @@ const Settings = ({ handleLogout }) => {
   }
 
   return (
-    <View>
-      <Text>This is Settings</Text>
-      <TouchableOpacity style={{ marginTop: 50 }} onPress={onLogout}>
-        <Text>Logout</Text>
-      </TouchableOpacity>
-      <Button
-        title="Logout"
-        style={styles.button}
-        onPress={onLogout}
-      />
-    </View>
+    <MainLayout>
+      <View style={styles.mainWrapper}>
+        <Button
+          title="Logout"
+          style={styles.button}
+          onPress={onLogout}
+        />
+      </View>
+    </MainLayout>
   ) 
 }
 

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { getAnalytics } from '../store/actions/app.action';
 import { authCheck } from '../store/actions/auth.actions';
 import AuthNavigator from './auth.navigator';
 
